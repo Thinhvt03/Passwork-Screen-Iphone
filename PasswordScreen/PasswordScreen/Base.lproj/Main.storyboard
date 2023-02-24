@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_12" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Passwork View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="viewController" id="BYZ-38-t0r" customClass="PassworkViewController" customModule="PasswordScreen" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gZY-GY-W2C">
+                                <rect key="frame" x="99.666666666666686" y="104" width="194" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="194" id="2Sa-Fb-0dT"/>
+                                    <constraint firstAttribute="height" constant="24" id="Lik-La-59l"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="S4V-of-3s5">
+                                <rect key="frame" x="30" y="233" width="333" height="350"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="350" id="d9J-WK-m0L"/>
+                                </constraints>
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="hqT-dj-haH">
+                                    <size key="itemSize" width="128" height="128"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="collectionCell" id="6GO-wG-X8p" customClass="MyCollectionViewCell" customModule="PasswordScreen" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="elJ-pR-Aui">
+                                            <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PYy-bw-3Ic">
+                                                    <rect key="frame" x="5" y="5" width="118" height="118"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="PYy-bw-3Ic" firstAttribute="leading" secondItem="elJ-pR-Aui" secondAttribute="leading" constant="5" id="A9F-oH-OM9"/>
+                                                <constraint firstAttribute="bottom" secondItem="PYy-bw-3Ic" secondAttribute="bottom" constant="5" id="NDR-Gr-sZ5"/>
+                                                <constraint firstItem="PYy-bw-3Ic" firstAttribute="top" secondItem="elJ-pR-Aui" secondAttribute="top" constant="5" id="oMA-hh-cgJ"/>
+                                                <constraint firstAttribute="trailing" secondItem="PYy-bw-3Ic" secondAttribute="trailing" constant="5" id="zkZ-tY-KbN"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <connections>
+                                            <outlet property="numberLabel" destination="PYy-bw-3Ic" id="I4e-DV-ASb"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="○  ○  ○  ○" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hN-Oc-FUu">
+                                <rect key="frame" x="120.33333333333333" y="162" width="152.33333333333337" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="S4V-of-3s5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="30" id="KXG-QK-0D6"/>
+                            <constraint firstItem="gZY-GY-W2C" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="Lms-OO-p8C"/>
+                            <constraint firstItem="5hN-Oc-FUu" firstAttribute="top" secondItem="gZY-GY-W2C" secondAttribute="bottom" constant="34" id="c4l-d6-NRp"/>
+                            <constraint firstItem="5hN-Oc-FUu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cgK-gC-e6u"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="S4V-of-3s5" secondAttribute="trailing" constant="30" id="may-dd-ulN"/>
+                            <constraint firstItem="S4V-of-3s5" firstAttribute="top" secondItem="5hN-Oc-FUu" secondAttribute="bottom" constant="35" id="rup-xC-ZdT"/>
+                            <constraint firstItem="gZY-GY-W2C" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="45" id="wbL-j1-Utw"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="YBC-h4-JNR"/>
+                    <connections>
+                        <outlet property="collectionView" destination="S4V-of-3s5" id="aLO-Db-pjq"/>
+                        <outlet property="heightOfCollectionView" destination="d9J-WK-m0L" id="UVp-ZY-J5K"/>
+                        <outlet property="passWorkLabel" destination="5hN-Oc-FUu" id="8XW-Zx-Dfv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="973.28244274809151" y="3.5211267605633805"/>
+        </scene>
+    </scenes>
+</document>
