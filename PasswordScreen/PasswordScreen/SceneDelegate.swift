@@ -42,9 +42,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     func sceneDidEnterBackground(_ scene: UIScene) {
-        // Called as the scene transitions from the foreground to the background.
-        // Use this method to save data, release shared resources, and store enough scene-specific state information
-        // to restore the scene back to its current state.
+        if let windowScene = scene as? UIWindowScene {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let vcPassword = storyboard.instantiateViewController(withIdentifier: "PasscodeViewController") as! ViewController
+            
+            window = UIWindow(windowScene: windowScene)
+            window?.rootViewController = vcPassword
+            window?.makeKeyAndVisible()
+        }
     }
 
 
