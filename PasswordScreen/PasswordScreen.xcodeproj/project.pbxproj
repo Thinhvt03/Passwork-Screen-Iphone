@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		82AEBC9C2A1B0C1800C29256 /* SecureView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 82AEBC9B2A1B0C1800C29256 /* SecureView.xib */; };
+		82AEBC9E2A1B0DD800C29256 /* SecureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 82AEBC9D2A1B0DD800C29256 /* SecureView.swift */; };
 		F02D652729A759AE00D0D8DC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02D652629A759AE00D0D8DC /* AppDelegate.swift */; };
 		F02D652929A759AE00D0D8DC /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F02D652829A759AE00D0D8DC /* SceneDelegate.swift */; };
 		F02D652E29A759AE00D0D8DC /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F02D652C29A759AE00D0D8DC /* Main.storyboard */; };
@@ -18,6 +20,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		82AEBC9B2A1B0C1800C29256 /* SecureView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecureView.xib; sourceTree = "<group>"; };
+		82AEBC9D2A1B0DD800C29256 /* SecureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecureView.swift; sourceTree = "<group>"; };
 		F02D652329A759AE00D0D8DC /* PasswordScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PasswordScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F02D652629A759AE00D0D8DC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		F02D652829A759AE00D0D8DC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -41,6 +45,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		82AEBCA52A1C4D7C00C29256 /* SecureView */ = {
+			isa = PBXGroup;
+			children = (
+				82AEBC9D2A1B0DD800C29256 /* SecureView.swift */,
+				82AEBC9B2A1B0C1800C29256 /* SecureView.xib */,
+			);
+			path = SecureView;
+			sourceTree = "<group>";
+		};
 		F02D651A29A759AE00D0D8DC = {
 			isa = PBXGroup;
 			children = (
@@ -63,6 +76,7 @@
 				F02D652629A759AE00D0D8DC /* AppDelegate.swift */,
 				F02D652829A759AE00D0D8DC /* SceneDelegate.swift */,
 				F03D215429CC86D100FFBECE /* ViewController.swift */,
+				82AEBCA52A1C4D7C00C29256 /* SecureView */,
 				F02D654429A8653C00D0D8DC /* MainScreen */,
 				F02D652C29A759AE00D0D8DC /* Main.storyboard */,
 				F02D652F29A759B000D0D8DC /* Assets.xcassets */,
@@ -139,6 +153,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82AEBC9C2A1B0C1800C29256 /* SecureView.xib in Resources */,
 				F02D653329A759B000D0D8DC /* LaunchScreen.storyboard in Resources */,
 				F02D653029A759B000D0D8DC /* Assets.xcassets in Resources */,
 				F02D652E29A759AE00D0D8DC /* Main.storyboard in Resources */,
@@ -153,6 +168,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				82AEBC9E2A1B0DD800C29256 /* SecureView.swift in Sources */,
 				F03D215529CC86D100FFBECE /* ViewController.swift in Sources */,
 				F02D652729A759AE00D0D8DC /* AppDelegate.swift in Sources */,
 				F02D652929A759AE00D0D8DC /* SceneDelegate.swift in Sources */,

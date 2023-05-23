@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21507" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YiN-L8-oSS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YiN-L8-oSS">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21505"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -21,121 +22,11 @@
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="okb-rX-9JM">
                                         <rect key="frame" x="96.666666666666686" y="124" width="200" height="50"/>
-                                        <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LRY-iY-4Ss">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AqV-iU-oTM" userLabel="firstBackgroundView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="50" id="pLe-nU-JSO"/>
-                                                            <constraint firstAttribute="height" constant="50" id="vvj-tJ-rL2"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CbR-Va-pOt" userLabel="firstpasscodeView">
-                                                        <rect key="frame" x="12.333333333333329" y="12.666666666666657" width="25" height="25"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="25" id="tha-Lt-zLW"/>
-                                                            <constraint firstAttribute="height" constant="25" id="zq9-QD-nlK"/>
-                                                        </constraints>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="AqV-iU-oTM" firstAttribute="centerX" secondItem="LRY-iY-4Ss" secondAttribute="centerX" id="8Aw-hA-5A9"/>
-                                                    <constraint firstAttribute="height" constant="50" id="GaY-B0-Z4O"/>
-                                                    <constraint firstItem="CbR-Va-pOt" firstAttribute="centerX" secondItem="LRY-iY-4Ss" secondAttribute="centerX" id="GyF-Gq-mZV"/>
-                                                    <constraint firstItem="AqV-iU-oTM" firstAttribute="centerY" secondItem="LRY-iY-4Ss" secondAttribute="centerY" id="QJf-aq-Iav"/>
-                                                    <constraint firstItem="CbR-Va-pOt" firstAttribute="centerY" secondItem="LRY-iY-4Ss" secondAttribute="centerY" id="ftU-wD-xvU"/>
-                                                    <constraint firstAttribute="width" constant="50" id="p5I-uh-EEU"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zSS-Ka-CaV">
-                                                <rect key="frame" x="49.999999999999986" y="0.0" width="50" height="50"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vrf-QB-Pxg" userLabel="SecondBackgroundView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="50" id="Og7-fe-Hnn"/>
-                                                            <constraint firstAttribute="width" constant="50" id="Xk7-qv-F6p"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bdD-DX-UQJ" userLabel="SecondpasscodeView">
-                                                        <rect key="frame" x="12.333333333333343" y="12.666666666666657" width="25" height="25"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="25" id="lp9-8B-oNl"/>
-                                                            <constraint firstAttribute="width" constant="25" id="tuv-Ez-5Da"/>
-                                                        </constraints>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="Vrf-QB-Pxg" firstAttribute="centerX" secondItem="zSS-Ka-CaV" secondAttribute="centerX" id="7mI-Zc-Pq0"/>
-                                                    <constraint firstItem="bdD-DX-UQJ" firstAttribute="centerY" secondItem="zSS-Ka-CaV" secondAttribute="centerY" id="B5C-lc-kd0"/>
-                                                    <constraint firstItem="bdD-DX-UQJ" firstAttribute="centerX" secondItem="zSS-Ka-CaV" secondAttribute="centerX" id="aI0-Fj-Xo4"/>
-                                                    <constraint firstAttribute="width" constant="50" id="cc3-jO-lJ9"/>
-                                                    <constraint firstAttribute="height" constant="50" id="g1U-hz-hdk"/>
-                                                    <constraint firstItem="Vrf-QB-Pxg" firstAttribute="centerY" secondItem="zSS-Ka-CaV" secondAttribute="centerY" id="mDp-rP-Mqf"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZvJ-9V-cC1">
-                                                <rect key="frame" x="99.999999999999986" y="0.0" width="50.000000000000014" height="50"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QGg-87-6fe" userLabel="ThirdBackgroundView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="50" id="6Bc-CU-8uW"/>
-                                                            <constraint firstAttribute="height" constant="50" id="Ygj-Ng-WVM"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pm2-JD-wwu" userLabel="ThirdSecondpasscodeView">
-                                                        <rect key="frame" x="12.333333333333343" y="12.666666666666657" width="25" height="25"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="25" id="Lk1-KX-q1w"/>
-                                                            <constraint firstAttribute="height" constant="25" id="aBd-KP-TCv"/>
-                                                        </constraints>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="QGg-87-6fe" firstAttribute="centerY" secondItem="ZvJ-9V-cC1" secondAttribute="centerY" id="65S-4I-c76"/>
-                                                    <constraint firstItem="QGg-87-6fe" firstAttribute="centerX" secondItem="ZvJ-9V-cC1" secondAttribute="centerX" id="F0J-4c-vI9"/>
-                                                    <constraint firstAttribute="width" constant="50" id="KJ3-sY-l5r"/>
-                                                    <constraint firstAttribute="height" constant="50" id="NoZ-Ts-CYq"/>
-                                                    <constraint firstItem="Pm2-JD-wwu" firstAttribute="centerX" secondItem="ZvJ-9V-cC1" secondAttribute="centerX" id="WoY-Q7-eAu"/>
-                                                    <constraint firstItem="Pm2-JD-wwu" firstAttribute="centerY" secondItem="ZvJ-9V-cC1" secondAttribute="centerY" id="kgw-nr-l4w"/>
-                                                </constraints>
-                                            </view>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zAF-5T-eSJ">
-                                                <rect key="frame" x="150" y="0.0" width="50" height="50"/>
-                                                <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yPv-ej-BgG" userLabel="FourthBackgroundView">
-                                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="width" constant="50" id="2ax-XZ-E1p"/>
-                                                            <constraint firstAttribute="height" constant="50" id="8Zk-Wx-ebv"/>
-                                                        </constraints>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="R7W-Ad-Gp8" userLabel="FourthpasscodeView">
-                                                        <rect key="frame" x="12.333333333333343" y="12.666666666666657" width="25" height="25"/>
-                                                        <constraints>
-                                                            <constraint firstAttribute="height" constant="25" id="dVr-Xy-2c7"/>
-                                                            <constraint firstAttribute="width" constant="25" id="zQO-hc-GJV"/>
-                                                        </constraints>
-                                                    </view>
-                                                </subviews>
-                                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                <constraints>
-                                                    <constraint firstItem="R7W-Ad-Gp8" firstAttribute="centerX" secondItem="zAF-5T-eSJ" secondAttribute="centerX" id="1le-U2-7Gp"/>
-                                                    <constraint firstItem="yPv-ej-BgG" firstAttribute="centerX" secondItem="zAF-5T-eSJ" secondAttribute="centerX" id="69d-bQ-DE1"/>
-                                                    <constraint firstAttribute="width" constant="50" id="7fa-Fp-a4h"/>
-                                                    <constraint firstAttribute="height" constant="50" id="W86-Ad-MXG"/>
-                                                    <constraint firstItem="yPv-ej-BgG" firstAttribute="centerY" secondItem="zAF-5T-eSJ" secondAttribute="centerY" id="c2h-Om-Jfr"/>
-                                                    <constraint firstItem="R7W-Ad-Gp8" firstAttribute="centerY" secondItem="zAF-5T-eSJ" secondAttribute="centerY" id="w4g-VU-RtO"/>
-                                                </constraints>
-                                            </view>
-                                        </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="200" id="YKY-KC-9Y5"/>
+                                            <constraint firstAttribute="height" constant="50" id="lHf-Pw-gE6"/>
+                                        </constraints>
                                     </stackView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Enter your password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yvg-pI-6lW" userLabel="StatusLabel">
                                         <rect key="frame" x="107" y="50" width="179" height="24"/>
@@ -503,16 +394,9 @@
                     </view>
                     <navigationItem key="navigationItem" id="Ulb-Hx-nhr"/>
                     <connections>
-                        <outlet property="firstBackgroundView" destination="AqV-iU-oTM" id="aMN-ef-hG0"/>
-                        <outlet property="firstPasscodeView" destination="CbR-Va-pOt" id="fdg-gZ-qg0"/>
-                        <outlet property="fourthBackgroundView" destination="yPv-ej-BgG" id="1ep-dJ-bkD"/>
-                        <outlet property="fourthPasscodeView" destination="R7W-Ad-Gp8" id="aPk-JU-nRq"/>
                         <outlet property="passcodeFieldsStackView" destination="okb-rX-9JM" id="h5T-8A-5st"/>
-                        <outlet property="secondBackgroundView" destination="Vrf-QB-Pxg" id="FbY-ce-vdI"/>
-                        <outlet property="secondPasscodeView" destination="bdD-DX-UQJ" id="2Eq-Z0-Fbi"/>
+                        <outlet property="stackViewWidthConstraint" destination="YKY-KC-9Y5" id="6q7-1q-HOO"/>
                         <outlet property="statusLabel" destination="Yvg-pI-6lW" id="Fx8-sc-bCG"/>
-                        <outlet property="thirdBackgroundView" destination="QGg-87-6fe" id="XLC-2a-nqV"/>
-                        <outlet property="thirdPasscodeView" destination="Pm2-JD-wwu" id="0RU-0G-ghM"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yHO-zJ-fee" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

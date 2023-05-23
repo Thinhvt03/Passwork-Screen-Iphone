@@ -1,22 +1,52 @@
-
 //  ViewController.swift
 //  PasswordScreen
 
 import UIKit
 
-class ViewController: UIViewController {
+extension UIViewController {
+    enum Alert {
+        case createPasscode
+        case confirmPasscode
+        case enterPasscode
+        
+        var name: String {
+            switch self {
+            case .createPasscode:
+                return "Create your password"
+            case .confirmPasscode:
+                return "Confirm your password"
+            case .enterPasscode:
+                return "Enter your password"
+            }
+        }
+        
+        var messages: String? {
+            switch self {
+            case .createPasscode:
+                return nil
+            case .confirmPasscode:
+                return "Password is not match."
+            case .enterPasscode:
+                return "Password is incorrect."
+            }
+        }
+    }
+    
+    // Set alert
+    func alert(_ title: String, message: String = "") {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let ok = UIAlertAction(title: "OK", style: .default)
+        alert.addAction(ok)
+        present(alert, animated: true)
+    }
+}
 
+class ViewController: UIViewController {
     @IBOutlet weak var passcodeFieldsStackView: UIStackView!
-    @IBOutlet weak var firstBackgroundView: UIView!
-    @IBOutlet weak var secondBackgroundView: UIView!
-    @IBOutlet weak var thirdBackgroundView: UIView!
-    @IBOutlet weak var fourthBackgroundView: UIView!
-    @IBOutlet weak var firstPasscodeView: UIView!
-    @IBOutlet weak var secondPasscodeView: UIView!
-    @IBOutlet weak var thirdPasscodeView: UIView!
-    @IBOutlet weak var fourthPasscodeView: UIView!
+    @IBOutlet weak var stackViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var statusLabel: UILabel!
     
+    private var viewsArray: [SecureView: Int] = [:]
     private let animationDuration: CGFloat = 0.25
     private let animationDelay: CGFloat = 0.1
     private let passcodeLength: Int = 4
@@ -29,88 +59,59 @@ class ViewController: UIViewController {
         static let passcode = "passcode"
     }
     
-    struct Titles {
-        static let enterPasscode = "Enter your password"
-        static let createPasscode = "Create your password "
-        static let confirmPasscode = "Confirm your password"
-    }
-    
-    struct Messages {
-        static let notMatch = "Password is not match."
-        static let incorrect = "Password is incorrect."
-    }
-    
     // MARK: - Lifecycle View
     
     override func viewDidLoad() {
         super.viewDidLoad()
         passcode = userDefaults.string(forKey: Keys.passcode) ?? ""
-        initialSetupViews()
+        setupViews()
         if passcode == "" {
-            statusLabel.text = Titles.createPasscode
+            statusLabel.text = Alert.createPasscode.name
         } else {
-            statusLabel.text = Titles.enterPasscode
+            statusLabel.text = Alert.enterPasscode.name
         }
     }
     
-    private func initialSetupViews() {
-        let backgroundViewArray = [firstBackgroundView, secondBackgroundView, thirdBackgroundView, fourthBackgroundView]
-        for subView in backgroundViewArray {
-            subView?.backgroundColor = .darkGray
-            subView?.layer.cornerRadius = subView!.bounds.width / 2
-            subView?.isHidden = true
+    func setupViews() {
+        for i in 0..<passcodeLength {
+            let secureView = SecureView()
+            viewsArray.updateValue(i, forKey: secureView)
+            passcodeFieldsStackView.addArrangedSubview(secureView)
         }
-        
-        let passcodeViewArray = [firstPasscodeView, secondPasscodeView, thirdPasscodeView, fourthPasscodeView]
-        for passcodeView in passcodeViewArray {
-            passcodeView?.backgroundColor = .darkGray
-            passcodeView?.layer.borderWidth = 1
-            passcodeView?.layer.borderColor = CGColor(red: 1, green: 1, blue: 1, alpha: 1)
-            passcodeView?.layer.cornerRadius = passcodeView!.bounds.width / 2
-        }
-    }
-    
-    // Setup passcode view while enter password.
-    func setupPasscodeViews() {
-        switch input.count {
-        case 1:
-            firstPasscodeView.backgroundColor = .white
-            firstBackgroundView.isHidden = false
-        case 2:
-            secondPasscodeView.backgroundColor = .white
-            secondBackgroundView.isHidden = false
-        case 3:
-            thirdPasscodeView.backgroundColor = .white
-            thirdBackgroundView.isHidden = false
-        case 4:
-            fourthPasscodeView.backgroundColor = .white
-            fourthBackgroundView.isHidden = false
-        default:
-            print("No handle")
-        }
+        let secureView = SecureView()
+        stackViewWidthConstraint.constant = secureView.backgroundWidthConstraint * CGFloat(passcodeLength)
     }
     
     // ProgressView has animation .
-    private func progressView(completion: @escaping () -> Void) {
+    func progressView(completion: @escaping () -> Void) {
         UIView.animate(withDuration: animationDuration, delay: animationDelay ) {
             self.view.layoutIfNeeded()
-            self.setupPasscodeViews()
+            self.setPasscodeFieldsViewWhenEnterPasscode()
         } completion: { _ in
-            self.firstBackgroundView.isHidden = true
-            self.secondBackgroundView.isHidden = true
-            self.thirdBackgroundView.isHidden = true
-            self.fourthBackgroundView.isHidden = true
+            let secureViews = self.viewsArray.compactMap { $0.key}
+            for secureView in secureViews {
+                secureView.isShowBackgoundView = true
+            }
             completion()
         }
     }
     
-    // Set up alert
-    private func alert(_ title: String, message: String = "") {
-        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        let ok = UIAlertAction(title: "OK", style: .default)
-        alert.addAction(ok)
-        present(alert, animated: true)
+    // Setup passcode view while enter password.
+    func setPasscodeFieldsViewWhenEnterPasscode() {
+        let secureViews = self.viewsArray.compactMap { $0.key}
+        let indexArray = self.viewsArray.compactMap { $0.value}
+        if let index = indexArray.firstIndex(of: input.count - 1) {
+            secureViews[index].setViewsWhenEnterPasscode()
+        }
     }
+    
+    func progressPasscodeFieldsView() {
+        let secureViews = self.viewsArray.compactMap { $0.key}
+        for secureView in secureViews {
+            secureView.progressPasscodeFieldsView()
+        }
+    }
+
     
     @IBAction func buttonPressed(_ sender: UIButton) {
         guard self.input.count < passcodeLength else { return }
@@ -119,19 +120,20 @@ class ViewController: UIViewController {
         }
         print(input)
         
-        progressView {
+            self.progressView {
             guard self.input.count == self.passcodeLength else { return }
             if !self.passcode.isEmpty {
                 if self.input == self.passcode {
                     self.showMainScreen()
                 } else {
-                    self.alert(Messages.incorrect)
+                    self.alert(Alert.enterPasscode.messages!)
+                    
                     self.progressPasscodeFieldsView()
                 }
             }
             else if self.temporary.isEmpty {
                 self.temporary = self.input
-                self.statusLabel.text = Titles.confirmPasscode
+                self.statusLabel.text = Alert.confirmPasscode.name
                 self.progressPasscodeFieldsView()
             } else {
                 if self.input == self.temporary {
@@ -139,8 +141,8 @@ class ViewController: UIViewController {
                     self.showMainScreen()
                 } else {
                     self.progressPasscodeFieldsView()
-                    self.alert(Messages.notMatch)
-                    self.statusLabel.text = Titles.createPasscode
+                    self.alert(Alert.confirmPasscode.messages!)
+                    self.statusLabel.text = Alert.createPasscode.name
                     self.temporary = ""
                 }
             }
@@ -153,17 +155,10 @@ class ViewController: UIViewController {
             input.removeLast()
             print(input)
         }
-        switch input.count + 1 {
-        case 1:
-            firstPasscodeView.backgroundColor = .darkGray
-        case 2:
-            secondPasscodeView.backgroundColor = .darkGray
-        case 3:
-            thirdPasscodeView.backgroundColor = .darkGray
-        case 4:
-            fourthPasscodeView.backgroundColor = .darkGray
-        default:
-            print("No handle")
+        let secureViews = self.viewsArray.compactMap { $0.key}
+        let indexArray = self.viewsArray.compactMap { $0.value}
+        if let index = indexArray.firstIndex(of: input.count) {
+            secureViews[index].isPasscodeViewColor = false
         }
     }
     
@@ -172,17 +167,7 @@ class ViewController: UIViewController {
             input.removeAll()
             print(input)
         }
-        progressPasscodeFieldsView()
-    }
-    
-    private func progressPasscodeFieldsView() {
-        UIView.animate(withDuration: animationDuration, delay: animationDelay) {
-        } completion: { _ in
-            self.firstPasscodeView.backgroundColor = .darkGray
-            self.secondPasscodeView.backgroundColor = .darkGray
-            self.thirdPasscodeView.backgroundColor = .darkGray
-            self.fourthPasscodeView.backgroundColor = .darkGray
-        }
+        self.progressPasscodeFieldsView()
     }
     
     // Show main screen
