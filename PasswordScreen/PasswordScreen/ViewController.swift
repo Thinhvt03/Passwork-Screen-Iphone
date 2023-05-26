@@ -46,7 +46,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var stackViewWidthConstraint: NSLayoutConstraint!
     @IBOutlet weak var statusLabel: UILabel!
     
-    private var viewsArray: [SecureView: Int] = [:]
+    private var viewsArray: [SecureView] = []
     private let animationDuration: CGFloat = 0.25
     private let animationDelay: CGFloat = 0.1
     private let passcodeLength: Int = 4
@@ -73,46 +73,34 @@ class ViewController: UIViewController {
     }
     
     func setupViews() {
-        for i in 0..<passcodeLength {
+        for _ in 0..<passcodeLength {
             let secureView = SecureView()
-            viewsArray.updateValue(i, forKey: secureView)
+            viewsArray.append(secureView)
             passcodeFieldsStackView.addArrangedSubview(secureView)
         }
         let secureView = SecureView()
         stackViewWidthConstraint.constant = secureView.backgroundWidthConstraint * CGFloat(passcodeLength)
     }
     
-    func getSecureViewAndIndex(completion: @escaping (SecureView, Int) -> Void) {
-        for (secureView, index) in viewsArray {
-            completion(secureView, index)
-        }
-    }
-    
     // ProgressView has animation .
     func progressView(completion: @escaping () -> Void) {
         UIView.animate(withDuration: animationDuration, delay: animationDelay ) {
             self.view.layoutIfNeeded()
-            self.setPasscodeFieldsViewWhenEnterPasscode()
+            
+            // index of viewsArray start index = 0, need to set input.count - 1
+            self.viewsArray[self.input.count - 1].setViewsWhenEnterPasscode()
         } completion: { _ in
-            self.getSecureViewAndIndex(completion: { secureView, _ in
+            for secureView in self.viewsArray {
                 secureView.isShowBackgoundView = true
-            })
+            }
             completion()
         }
     }
     
-    // Setup passcode view while enter password.
-    func setPasscodeFieldsViewWhenEnterPasscode() {
-        getSecureViewAndIndex(completion: { (secureView, index) in
-            guard self.input.count - 1 == index else { return }
-            secureView.setViewsWhenEnterPasscode()
-        })
-    }
-    
-    func progressPasscodeFieldsView() {
-        getSecureViewAndIndex(completion: { secureView, _ in
+    func progressPasscodeFieldsViews() {
+        for secureView in self.viewsArray {
             secureView.progressPasscodeFieldsView()
-        })
+        }
     }
 
     @IBAction func buttonPressed(_ sender: UIButton) {
@@ -129,19 +117,19 @@ class ViewController: UIViewController {
                     self.showMainScreen()
                 } else {
                     self.alert(Alert.enterPasscode.messages!)
-                    self.progressPasscodeFieldsView()
+                    self.progressPasscodeFieldsViews()
                 }
             }
             else if self.temporary.isEmpty {
                 self.temporary = self.input
                 self.statusLabel.text = Alert.confirmPasscode.name
-                self.progressPasscodeFieldsView()
+                self.progressPasscodeFieldsViews()
             } else {
                 if self.input == self.temporary {
                     self.userDefaults.set(self.input, forKey: Keys.passcode)
                     self.showMainScreen()
                 } else {
-                    self.progressPasscodeFieldsView()
+                    self.progressPasscodeFieldsViews()
                     self.alert(Alert.confirmPasscode.messages!)
                     self.statusLabel.text = Alert.createPasscode.name
                     self.temporary = ""
@@ -152,22 +140,19 @@ class ViewController: UIViewController {
     }
     
     @IBAction func deleteButtonPressed(_ sender: UIButton) {
-        if sender.tag == -2 {
+        if sender.tag == -2, input.count != 0 {
             input.removeLast()
             print(input)
         }
-        getSecureViewAndIndex(completion: { (secureView, index) in
-            guard self.input.count == index else { return }
-            secureView.isPasscodeViewColor = false
-        })
+        self.viewsArray[input.count].isPasscodeViewColor = false
     }
     
     @IBAction func buttonDeleteAll(_ sender: UIButton) {
-        if sender.tag == -1 {
+        if sender.tag == -1, input.count != 0 {
             input.removeAll()
             print(input)
         }
-        self.progressPasscodeFieldsView()
+        self.progressPasscodeFieldsViews()
     }
     
     // Show main screen
